@@ -60,9 +60,11 @@ function fight () {
         () => {
             if (Jug1.life > 0 && Jug2.life > 0) {
             let num = Math.round(Math.random()*10)
-            let move = document.getElementById("move").innerText = ""
+            let move = document.getElementById("move")
 
             if (num > 5){
+                move.classList.remove("ataque")
+                move.classList.remove("defensa")
                 Jug1.drinkColacao();
                 let power = document.getElementById("power1")
                 let width = power.style.width.slice(0, -1)
@@ -73,6 +75,8 @@ function fight () {
                 defend()
                 winner()
             } else {
+                move.classList.remove("defensa")
+                move.classList.remove("ataque")
                 Jug2.getDefend(Jug1.getAttack());
                 let life2 = document.getElementById("life2")
                 let width = life2.style.width.slice(0, -1)
@@ -93,9 +97,11 @@ function fight () {
         () => {
             if (Jug1.life > 0 && Jug2.life > 0){
             let num = Math.round(Math.random()*10)
-            let move = document.getElementById("move2").innerText = ""
-
+            let move = document.getElementById("move2")
+            
             if (num > 5){
+                move.classList.remove("defensa")
+                move.classList.remove("ataque2")
                 Jug2.drinkNesquik(); 
                 let life2 = document.getElementById("life2")
                 let width = life2.style.width.slice(0, -1)
@@ -106,6 +112,8 @@ function fight () {
                 defend2()
                 winner()
             } else {
+                move.classList.remove("defensa")
+                move.classList.remove("ataque2")
                 Jug1.getDefend(Jug2.getAttack());
                 let life1 = document.getElementById("life1")
                 let width = life1.style.width.slice(0, -1)
@@ -146,23 +154,23 @@ if (Jug1.life <= 0){
 // FUNCIONES DE ATAQUE
 function attack(){
     let move = document.getElementById("move")
-    let text = document.createTextNode("¡¡¡ATTAAAAAAAAAAACK!!!")
-    move.appendChild(text)
+    move.classList.add("ataque")
+    
 }
 function attack2(){
     let move = document.getElementById("move2")
-    let text = document.createTextNode("¡¡¡ATTAAAAAAAAAAACK!!!")
-    move.appendChild(text)
+    move.classList.add("ataque2")
+    
 }
 
 // FUNCIONES DE DEFENSA
 function defend(){
     let move = document.getElementById("move")
-    let text = document.createTextNode("¡¡¡DRINK COLACAO!!!")
-    move.appendChild(text)
+    move.classList.add("defensa")
+    
 }
 function defend2(){
     let move = document.getElementById("move2")
-    let text = document.createTextNode("¡¡¡DRINK NESQUICK!!!")
-    move.appendChild(text)
+    move.classList.add("defensa")
+    
 }
